@@ -4,14 +4,13 @@ import os
 class Arbol_Huffman:
     def __init__(self, Lista):
         self.creation(Lista)
-        #self.raiz = Nodo("vacio", 0)
 
     def creation(self, Lista):
         ruta_archivo = "./Archivos/Archivo_Comprimir.txt"  
 
         tamaño = os.path.getsize(ruta_archivo)
         i = 1
-        while Lista.head.cant_ocurrences < tamaño:
+        while Lista.length() != 1:
             nodo_1 = Lista.pop()
             nodo_2 = Lista.pop()
             nodo_huffman = self.construction(nodo_1, nodo_2, i)
