@@ -4,7 +4,7 @@ class Lista:
     def __init__(self):
         self.head = None
 
-    def append(self, node):
+    def append(self, node): #Insertar nodo en la ultima posicion de la lista, si ya esta contenido suma en las ocurrencias
         if self.head is None:
             self.head = node
         else:
@@ -20,13 +20,13 @@ class Lista:
                     else:
                         iterator = iterator.next
 
-    def print_list(self):  
+    def print_list(self): #metodo para imprimir el contenido de la lista
         iterator = self.head
         while iterator is not None:
             print(iterator.char + "|" + str(iterator.cant_ocurrences) + "-->", end = " ")
             iterator = iterator.next
 
-    def length(self):  
+    def length(self):  #calcular longitud de la lista
         length = 0
         iterator = self.head
         while iterator is not None:
@@ -34,8 +34,7 @@ class Lista:
             iterator = iterator.next
         return length
     
-    def sort(self, reverse): 
-        #reverse es una variable booleana que indica si se ordena de mayor a menor o viceversa
+    def sort(self): #metodo de ordenamiento de la lista
         list = []
         j = 0
         while j < self.length():
@@ -45,11 +44,7 @@ class Lista:
             list.append(Node)
             j+=1
         self.clear_list()
-        if not reverse:
-            #menor a mayor
-            list.sort(key=lambda Node: Node.cant_ocurrences, reverse = False)
-        else:
-            list.sort(key=lambda Node: Node.cant_ocurrences, reverse = True)
+        list.sort(key=lambda Node: Node.cant_ocurrences, reverse = False)
         for i in list:
             self.append(i)
 

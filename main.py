@@ -33,15 +33,7 @@ def write_file(content, table_huffman):
                 code = ""
                 i += 1
         numero_decimal = int(acum, 2)
-        try:
-            file.write(numero_decimal.to_bytes(len(acum)//8, 'big'))
-        except:
-            k = 0
-            while k < len(acum):
-                sub_acum = acum[k:(k+7)]
-                numero_decimal1 = int(sub_acum, 2)
-                file.write(numero_decimal1.to_bytes(len(sub_acum)//8, 'big'), end = "")
-                k+=8
+        file.write(numero_decimal.to_bytes(len(acum)//8, 'big'))
         return relleno
 
 def descomprimir_archivo():
@@ -86,7 +78,7 @@ def comprimir_archivo():
                 node = Nodo("li", 1)
             a.append(node)
 
-    a.sort(False)
+    a.sort()
     b = arbol_h(a.copy())
     table_huffman = b.create_huffman_code(b.raiz, "")
     relleno = write_file(content, table_huffman)
